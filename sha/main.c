@@ -99,8 +99,13 @@ int main()
 	int pass = sha256_test();
 	uint64_t end = read_cycles();
 
-	printf("cycles: %llu \n", end - start);
-	printf("%d\n", pass);
+	uint64_t time = end - start;
+
+	if(BAREMETAL)
+		__builtin_trap(); 
+		
+	// printf("cycles: %llu \n", end - start);
+	// printf("%d\n", pass);
 
 	return(0);
 }
